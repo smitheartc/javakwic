@@ -9,7 +9,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "CIRCULAR_SHIFTS")
-public class StoredCircularShift {
+public class CircularShiftEntity {
     @Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
@@ -18,11 +18,11 @@ public class StoredCircularShift {
 	private String circularShift;
 
 
-    public StoredCircularShift(String cs){
+    public CircularShiftEntity(String cs){
         this.circularShift = cs;
     }
 
-    protected StoredCircularShift() { }
+    protected CircularShiftEntity() { }
 
 
     @Override

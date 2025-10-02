@@ -1,13 +1,15 @@
 package com.smitheartc.javakwic;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Component;
 
 import com.smitheartc.javakwic.database.CircularShiftRepository;
 import com.smitheartc.javakwic.database.ResponseDTO;
-import com.smitheartc.javakwic.database.StoredCircularShift;
+import com.smitheartc.javakwic.database.CircularShiftEntity;
 
 @Component
 public class Output {
@@ -42,11 +44,14 @@ public class Output {
             }
             frontendResponse.add(lineToBeStored);
 
-            StoredCircularShift record = new StoredCircularShift(lineToBeStored);
+            CircularShiftEntity record = new CircularShiftEntity(lineToBeStored);
 
             circularShiftRepository.save(record);            
         }
-    }
 
+    }
+    public Collection<String> getIndexTable() {
+        return circularShiftRepository.getIndexTable();
+    };
     
 }
