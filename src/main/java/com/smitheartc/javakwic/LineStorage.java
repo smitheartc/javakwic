@@ -31,7 +31,7 @@ public class LineStorage {
 
         System.err.println(characterStorage.toString());
 
-        }
+    }
 
     public String getLine(int lineNumber) {
         return characterStorage.toString().split("\\$")[lineNumber];

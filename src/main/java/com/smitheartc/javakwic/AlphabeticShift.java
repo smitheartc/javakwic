@@ -22,7 +22,7 @@ public class AlphabeticShift {
     private ArrayList<Integer> orderedCSIndices = new ArrayList<>();
 
     public void alpha() {
-        //load in all circularshifts
+        //load in all circularshifts - might need to fix later, we'll see
         ArrayList<String> frontendResponse = responseDTO.getCircularShiftedLines();
         ArrayList<Pair<String,Integer>> circularShifts = new ArrayList<>();
         for (; index < circularShift.getNumberOfShifts(); index++) {

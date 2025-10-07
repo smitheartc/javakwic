@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.smitheartc.javakwic.database.ResponseDTO;
-import com.smitheartc.javakwic.database.CircularShiftEntity;
+import com.smitheartc.javakwic.database.InputObject;
 
 @SpringBootApplication
 @RestController
@@ -60,7 +60,9 @@ public class MasterController {
 		
 		int lineCount = 0;
 
-		String[] individualLines = inputObject.getInputArray().split("\\$");
+		System.err.println("Here's what we got: " + inputObject.getInputArray());
+
+		String[] individualLines = inputObject.getInputArray().split("\n");
         for (String itemToRead : individualLines) { //incremental instead of batch processing
 			input.read(itemToRead);
 	        circularShift.addLine(lineCount);

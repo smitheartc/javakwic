@@ -1,4 +1,4 @@
-package com.smitheartc.javakwic;
+package com.smitheartc.javakwic.database;
 
 //simple data object for parsing frontend input
 public class InputObject {
