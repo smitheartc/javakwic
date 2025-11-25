@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface CircularShiftRepository extends CrudRepository<CircularShiftEntity, Integer> {
 
-    @Query("SELECT e.circularShift FROM CircularShiftEntity e ORDER BY e.circularShift ASC")
+    @Query("SELECT e.circularShift, LOWER(e.circularShift) AS lowercase FROM CircularShiftEntity e ORDER BY lowercase ASC")
     Collection<String> getIndexTable();
 
 }

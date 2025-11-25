@@ -13,7 +13,7 @@ public class Input {
     //included a read and store operation per instructions lol
     public void read(String itemToRead) {
 
-        this.store(itemToRead.toUpperCase());
+        this.store(itemToRead);
 
     }
 

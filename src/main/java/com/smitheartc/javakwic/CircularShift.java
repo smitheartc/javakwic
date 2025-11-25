@@ -39,7 +39,7 @@ public class CircularShift {
     public void addLine(int lineNumber){
         int numberOfWords = lineStorage.word(lineNumber);
         for (int offset = 0; offset < numberOfWords; offset++) {
-            if (NOISE_WORDS.contains(lineStorage.getLine(lineNumber).split(" ")[offset])) { //noise eliminator function - if Noise Words "contains" the first word of a circularly shifted line, it is skipped
+            if (NOISE_WORDS.contains(lineStorage.getLine(lineNumber).split(" ")[offset].toUpperCase())) { //noise eliminator function - if Noise Words "contains" the first word of a circularly shifted line, it is skipped
                 continue;
             }
             Pair<Integer, Integer> virtualCircularShift = new Pair<Integer,Integer>(lineNumber, offset);
