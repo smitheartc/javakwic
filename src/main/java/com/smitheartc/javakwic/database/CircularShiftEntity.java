@@ -17,9 +17,13 @@ public class CircularShiftEntity {
 	@Column(nullable = false)
 	private String circularShift;
 
+    @Column
+    private String url;
 
-    public CircularShiftEntity(String cs){
+
+    public CircularShiftEntity(String cs, String u){
         this.circularShift = cs;
+        this.url = u;
     }
 
     protected CircularShiftEntity() { }

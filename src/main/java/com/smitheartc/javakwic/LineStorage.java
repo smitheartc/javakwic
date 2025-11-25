@@ -1,10 +1,14 @@
 package com.smitheartc.javakwic;
 
+import java.util.ArrayList;
+
 import org.springframework.stereotype.Service;
 
 @Service
 public class LineStorage {
     private StringBuffer characterStorage;
+
+    private ArrayList<String> urlStorage;
 
     private int lineCount;
 
@@ -17,6 +21,7 @@ public class LineStorage {
 
     public LineStorage(){ //constructor
         characterStorage = new StringBuffer();
+        urlStorage = new ArrayList<>();
         lineCount = 0;
     }
 
@@ -25,8 +30,10 @@ public class LineStorage {
         if (!(characterStorage.length() == 0)) {
             characterStorage.append('$');
         }
-        
-        characterStorage.append(line);
+
+        String[] splitLine = line.split("~");
+        urlStorage.addLast(splitLine[0]);
+        characterStorage.append(splitLine[1]);
         lineCount++;
 
         System.err.println(characterStorage.toString());
@@ -35,6 +42,10 @@ public class LineStorage {
 
     public String getLine(int lineNumber) {
         return characterStorage.toString().split("\\$")[lineNumber];
+    }
+
+    public String getUrl(int lineNumber) {
+        return urlStorage.get(lineNumber);
     }
 
     public int word(int lineNumber) { //returns number of words in a line

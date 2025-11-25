@@ -13,6 +13,9 @@ import com.smitheartc.javakwic.database.CircularShiftEntity;
 @Component
 public class Output {
 
+    @Autowired
+    private LineStorage lineStorage;
+
     @Autowired 
     private AlphabeticShift alphabeticShift;
 
@@ -36,6 +39,10 @@ public class Output {
             //janky way of checking if a newline needs to be added
             int csIndex = alphabeticShift.i_th(i);
             int newLineNumber = circularShift.getVirtualCircularShift(csIndex).getValue0();
+
+            String url = lineStorage.getUrl(newLineNumber);
+            System.err.println("Here's the url: " + url);
+
             String lineToBeStored = circularShift.getLine(csIndex); //gets the actual content of the first circular shift
             if (lineNumber != newLineNumber) {
                 frontendResponse.add("\n");
@@ -43,7 +50,7 @@ public class Output {
             }
             frontendResponse.add(lineToBeStored);
 
-            CircularShiftEntity record = new CircularShiftEntity(lineToBeStored);
+            CircularShiftEntity record = new CircularShiftEntity(lineToBeStored, url);
 
             circularShiftRepository.save(record);            
         }
