@@ -1,7 +1,8 @@
-package com.smitheartc.javakwic;
+package com.smitheartc.backend;
 
 import java.util.Collection;
 
+import com.smitheartc.backend.kwicSystem.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -11,8 +12,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.smitheartc.javakwic.database.ResponseDTO;
-import com.smitheartc.javakwic.database.InputObject;
+import com.smitheartc.backend.database.ResponseDTO;
+import com.smitheartc.backend.database.SearchObject;
+import com.smitheartc.backend.database.InputObject;
 
 @SpringBootApplication
 @RestController
@@ -79,6 +81,16 @@ public class MasterController {
 	@GetMapping("/indexTable")
 	public Collection<String>  getIndexTable() {
 		return output.getIndexTable();
+	}
+
+	@CrossOrigin
+	@PostMapping("/search")
+	public Collection<String> search(@RequestBody SearchObject searchObject) {
+		Collection<String> obj = output.getIndexTable();
+		Class<?> objectClass = obj.getClass();
+		System.err.println(objectClass.getName()); // Output: java.lang.String
+		System.err.println(objectClass.getSimpleName()); // Output: String
+		return obj;
 	}
 	
 

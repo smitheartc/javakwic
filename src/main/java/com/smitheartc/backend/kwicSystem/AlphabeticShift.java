@@ -1,4 +1,4 @@
-package com.smitheartc.javakwic;
+package com.smitheartc.backend.kwicSystem;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -7,7 +7,7 @@ import org.javatuples.Pair;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.smitheartc.javakwic.database.ResponseDTO;
+import com.smitheartc.backend.database.ResponseDTO;
 
 @Service
 public class AlphabeticShift {
@@ -25,6 +25,7 @@ public class AlphabeticShift {
         //load in all circularshifts - might need to fix later, we'll see
         ArrayList<String> frontendResponse = responseDTO.getCircularShiftedLines();
         ArrayList<Pair<String,Integer>> circularShifts = new ArrayList<>();
+        
         for (; index < circularShift.getNumberOfShifts(); index++) {
             String circularlyShiftedLine = circularShift.getLine(index);
             frontendResponse.add(circularlyShiftedLine);

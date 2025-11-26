@@ -1,4 +1,4 @@
-package com.smitheartc.javakwic.database;
+package com.smitheartc.backend.database;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package com.smitheartc.javakwic;
+package com.smitheartc.backend.kwicSystem;
 
 import java.util.ArrayList;
 

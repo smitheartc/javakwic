@@ -1,4 +1,4 @@
-package com.smitheartc.javakwic;
+package com.smitheartc.backend.kwicSystem;
 
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;

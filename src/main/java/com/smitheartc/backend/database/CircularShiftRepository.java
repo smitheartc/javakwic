@@ -1,4 +1,4 @@
-package com.smitheartc.javakwic.database;
+package com.smitheartc.backend.database;
 
 import java.util.Collection;
 
@@ -13,7 +13,7 @@ public interface CircularShiftRepository extends CrudRepository<CircularShiftEnt
     // Collection<String> getIndexTable();
 
 
-    @Query("SELECT e.circularShift FROM CircularShiftEntity e ORDER BY LOWER(e.circularShift) ASC")
+    @Query("SELECT e.circularShift, e.url FROM CircularShiftEntity e ORDER BY LOWER(e.circularShift) ASC")
     Collection<String> getIndexTable();
 
 }
