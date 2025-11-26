@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.smitheartc.backend.database.CircularShiftRepository;
-import com.smitheartc.backend.database.ResponseDTO;
+import com.smitheartc.backend.database.KWICFrontendResponseDTO;
 import com.smitheartc.backend.database.CircularShiftEntity;
 
 @Component
@@ -26,11 +26,11 @@ public class Output {
     private CircularShiftRepository circularShiftRepository;
 
     @Autowired 
-    private ResponseDTO responseDTO;
+    private KWICFrontendResponseDTO kwicFrontendResponseDTO;
 
     public void storeResults() {
         int numberOfShifts = circularShift.getNumberOfShifts();
-        ArrayList<String> frontendResponse = responseDTO.getAlphabetizedLines();
+        ArrayList<String> frontendResponse = kwicFrontendResponseDTO.getAlphabetizedLines();
 
         int lineNumber = 0;
 

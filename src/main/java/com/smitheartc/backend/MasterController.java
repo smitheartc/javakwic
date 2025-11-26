@@ -2,6 +2,7 @@ package com.smitheartc.backend;
 
 import java.util.Collection;
 
+import com.smitheartc.backend.cyberminer.SearchHandler;
 import com.smitheartc.backend.kwicSystem.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -12,7 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.smitheartc.backend.database.ResponseDTO;
+import com.smitheartc.backend.database.KWICFrontendResponseDTO;
 import com.smitheartc.backend.database.SearchObject;
 import com.smitheartc.backend.database.InputObject;
 
@@ -36,14 +37,17 @@ public class MasterController {
 	private AlphabeticShift alphabeticShift;
 
 	@Autowired
-	private ResponseDTO responseDTO;
+	private KWICFrontendResponseDTO kwicFrontendResponseDTO;
+
+    @Autowired
+    private SearchHandler searchHandler;
 
 
 	private void clearMemory() {
 		lineStorage.clearMemory();
 		circularShift.clearMemory();
 		alphabeticShift.clearMemory();
-		responseDTO.clearMemory();
+		kwicFrontendResponseDTO.clearMemory();
 	}
 
 	
@@ -56,7 +60,7 @@ public class MasterController {
 
 	@CrossOrigin
     @PostMapping("/input")
-    public ResponseDTO inputRequest(@RequestBody InputObject inputObject) {
+    public KWICFrontendResponseDTO inputRequest(@RequestBody InputObject inputObject) {
 
 		clearMemory();
 		
@@ -74,7 +78,7 @@ public class MasterController {
 
 		output.storeResults();
 
-		return responseDTO;
+		return kwicFrontendResponseDTO;
     }
 
 	@CrossOrigin
@@ -86,11 +90,7 @@ public class MasterController {
 	@CrossOrigin
 	@PostMapping("/search")
 	public Collection<String> search(@RequestBody SearchObject searchObject) {
-		Collection<String> obj = output.getIndexTable();
-		Class<?> objectClass = obj.getClass();
-		System.err.println(objectClass.getName()); // Output: java.lang.String
-		System.err.println(objectClass.getSimpleName()); // Output: String
-		return obj;
+        return searchHandler.handleSearch(searchObject);
 	}
 	
 

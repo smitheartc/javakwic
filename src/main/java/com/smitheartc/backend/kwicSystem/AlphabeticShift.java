@@ -7,7 +7,7 @@ import org.javatuples.Pair;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.smitheartc.backend.database.ResponseDTO;
+import com.smitheartc.backend.database.KWICFrontendResponseDTO;
 
 @Service
 public class AlphabeticShift {
@@ -15,7 +15,7 @@ public class AlphabeticShift {
     private CircularShift circularShift;
 
     @Autowired
-    private ResponseDTO responseDTO;
+    private KWICFrontendResponseDTO kwicFrontendResponseDTO;
 
     private int index = 0;
 
@@ -23,7 +23,7 @@ public class AlphabeticShift {
 
     public void alpha() {
         //load in all circularshifts - might need to fix later, we'll see
-        ArrayList<String> frontendResponse = responseDTO.getCircularShiftedLines();
+        ArrayList<String> frontendResponse = kwicFrontendResponseDTO.getCircularShiftedLines();
         ArrayList<Pair<String,Integer>> circularShifts = new ArrayList<>();
         
         for (; index < circularShift.getNumberOfShifts(); index++) {
