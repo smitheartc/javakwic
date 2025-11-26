@@ -15,6 +15,7 @@ public class SearchHandler {
                 break;
             case "AND":
                 System.err.println("And detected");
+
                 break;
             case "NOT":
                 System.err.println("Not detected");

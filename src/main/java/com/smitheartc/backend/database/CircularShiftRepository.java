@@ -16,4 +16,5 @@ public interface CircularShiftRepository extends CrudRepository<CircularShiftEnt
     @Query("SELECT e.circularShift, e.url FROM CircularShiftEntity e ORDER BY LOWER(e.circularShift) ASC")
     Collection<String> getIndexTable();
 
+
 }

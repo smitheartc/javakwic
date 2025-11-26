@@ -5,7 +5,7 @@ import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
+import org.javatuples.Pair;
 import com.smitheartc.backend.database.CircularShiftRepository;
 import com.smitheartc.backend.database.KWICFrontendResponseDTO;
 import com.smitheartc.backend.database.CircularShiftEntity;
@@ -38,8 +38,13 @@ public class Output {
 
             //janky way of checking if a newline needs to be added
             int csIndex = alphabeticShift.i_th(i);
-            int newLineNumber = circularShift.getVirtualCircularShift(csIndex).getValue0();
+            Pair<Integer,Integer> cs = circularShift.getVirtualCircularShift(csIndex);
+            int newLineNumber = cs.getValue0();
 
+            boolean shifted = (cs.getValue1() != 0)
+
+            //adding a unique ID for each cs so table shows who the original is
+            int lineHash = lineStorage.getLine(newLineNumber).hashCode();
             String url = lineStorage.getUrl(newLineNumber);
             System.err.println("Here's the url: " + url);
 
@@ -50,7 +55,7 @@ public class Output {
             }
             frontendResponse.add(lineToBeStored);
 
-            CircularShiftEntity record = new CircularShiftEntity(lineToBeStored, url);
+            CircularShiftEntity record = new CircularShiftEntity(lineToBeStored, url, lineHash, shifted);
 
             circularShiftRepository.save(record);            
         }
