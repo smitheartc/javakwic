@@ -20,6 +20,8 @@ public class CircularShiftEntity {
     @Column
     private String url;
 
+    @Column int urlHits;
+
     @Column
     private int hash;
 

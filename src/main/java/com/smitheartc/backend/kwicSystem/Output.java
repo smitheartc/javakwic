@@ -41,7 +41,7 @@ public class Output {
             Pair<Integer,Integer> cs = circularShift.getVirtualCircularShift(csIndex);
             int newLineNumber = cs.getValue0();
 
-            boolean shifted = (cs.getValue1() != 0)
+            boolean shifted = (cs.getValue1() != 0);
 
             //adding a unique ID for each cs so table shows who the original is
             int lineHash = lineStorage.getLine(newLineNumber).hashCode();

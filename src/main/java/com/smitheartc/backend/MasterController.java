@@ -3,10 +3,12 @@ package com.smitheartc.backend;
 import java.util.Collection;
 
 import com.smitheartc.backend.cyberminer.SearchHandler;
+import com.smitheartc.backend.database.CircularShiftEntity;
 import com.smitheartc.backend.kwicSystem.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -89,7 +91,7 @@ public class MasterController {
 
 	@CrossOrigin
 	@PostMapping("/search")
-	public Collection<String> search(@RequestBody SearchObject searchObject) {
+	public Page<CircularShiftEntity> search(@RequestBody SearchObject searchObject) {
         return searchHandler.handleSearch(searchObject);
 	}
 	
