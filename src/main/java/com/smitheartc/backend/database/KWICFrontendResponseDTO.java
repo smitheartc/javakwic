@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import org.springframework.stereotype.Component;
 
 @Component
-public class ResponseDTO {
+public class KWICFrontendResponseDTO {
     
     private ArrayList<String> circularShiftedLines = new ArrayList<>();
     public ArrayList<String> getCircularShiftedLines() {
