@@ -8,6 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.JpaSort;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
@@ -22,7 +23,7 @@ public class SearchHandler {
         Sort sort;
         switch(searchObject.sortMethod) {
             case "alphabetical":
-                sort = Sort.by("circularShift").ascending();
+                sort = JpaSort.unsafe(Sort.Direction.ASC, "lower(circularShift)");
                 break;
             case "hits":
                 sort = Sort.by("urlHits").ascending();
