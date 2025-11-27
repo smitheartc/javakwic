@@ -20,16 +20,16 @@ public class CircularShiftEntity {
     @Column
     private String url;
 
-    @Column int urlHits;
+    @Column Integer urlHits;
 
     @Column
-    private int hash;
+    private Integer hash;
 
     @Column
-    private boolean shifted;
+    private Boolean shifted;
 
 
-    public CircularShiftEntity(String cs, String u, int h, boolean s) {
+    public CircularShiftEntity(String cs, String u, Integer h, Boolean s) {
         this.circularShift = cs;
         this.url = u;
         this.hash = h;
