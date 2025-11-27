@@ -56,5 +56,6 @@ public class LineStorage {
 
     public void clearMemory(){
         characterStorage = new StringBuffer();
+        urlStorage = new ArrayList<>();
     }
 }
