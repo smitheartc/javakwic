@@ -6,6 +6,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.Getter;
 
 @Entity
 @Table(name = "CIRCULAR_SHIFTS")
@@ -14,9 +15,16 @@ public class CircularShiftEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
-	@Column(nullable = false)
+    @Column(nullable = false)
 	private String circularShift;
 
+    public String getCircularShift() {
+        return circularShift;
+    }
+
+    public String getUrl() {
+        return url;
+    }
     @Column
     private String url;
 
@@ -34,6 +42,11 @@ public class CircularShiftEntity {
         this.url = u;
         this.hash = h;
         this.shifted = s;
+    }
+
+    public CircularShiftEntity(String cs, String u) {
+        this.circularShift = cs;
+        this.url = u;
     }
 
     protected CircularShiftEntity() { }
